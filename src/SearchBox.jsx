@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import './SearchBox.css';
 import { useState } from 'react';
 
+
 export default function SearchBox() {
     let [city, setCity] = useState("");
     const API_URL = "https://api.openweathermap.org/data/2.5/weather"
@@ -12,6 +13,7 @@ export default function SearchBox() {
         let response = await fetch(`${API_URL}?q=${city}&appid=${API_KEY}&units=metric`);
         let jsonResponse = await response.json();
         let result = {
+            city: city,
             temp: jsonResponse.main.temp,
             temMin: jsonResponse.main.temp_min,
             temMax: jsonResponse.main.temp_max,
